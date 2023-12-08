@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>瓜子二手车-卖车</title>
+    <link rel="stylesheet" href="./css/sellcar.css">
+
+</head>
+
+<body>
+    <div class="content">
+        <!-- 添加爱车 -->
+        <div class="add-mycad bgradius mar_bot">
+            <div class="qy-left"><img src="./images/img-add.png" alt="" /></div>
+            <div class="qy-middle">
+                <p class="qy-middle-tlt">添加我的爱车</p>
+                <p class="qy-middle-tltinfo">估价，同车型成交价，行情速度</p>
+            </div>
+            <div class="qy-right"><button class="btn">添加</button></div>
+        </div>
+        <!-- 看看我的车值多少钱 -->
+        <div class="value-bill bgradius mar_bot">
+            <h2>看看我的车值多少钱？</h2>
+            <p>累计超千万车主完成估价</p>
+            <div class="btnBox anima"><button class="btn">先估个价</button></div>
+        </div>
+        <!-- tab栏  -->
+        <div class="tableBox  bgradius mar_bot">
+            <div class="tab_list">
+                <ul>
+                    <li class="active"><span>高价买车</span></li>
+                    <li><span>验车说明</span></li>
+                    <li><span>签订合同</span></li>
+                </ul>
+            </div>
+            <div class="tab_con">
+                <div class="item" style='display:block;'>
+                    <div class="up-door">上门验车地点/时间</div>
+                    <div class="please">
+                        <input type="text" type=time placeholder="请选择验车地点" class="ipt" />
+                        <img src="./images/dingwei.png" alt="" />
+                    </div>
+                    <div class="please"><input type="date" class="ipt"></div>
+                </div>
+                <div class="item">
+                    <div class="up-door">验车说明内容</div>
+                    <div class="please">
+                        外观检查：检查车身是否有明显的划痕、凹陷或喷漆不均匀的情况。检查车门、行李箱和引擎盖的开闭是否顺畅。
+                        内部检查：检查座椅、方向盘、脚垫和内饰是否干净整洁，没有明显的污渍或破损。检查仪表盘上的指示灯是否正常亮起，并确认所有仪表功能正常。
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="up-door">签订合同说明</div>
+                    <div class="please">
+                        自年月日时分以后的任何交通事故、违章、罚款等经济纠纷及其他问题由购车人负责，与卖车人无关，自购车之日起，车辆一切机械故障由购车人负责。
+                        双方责任：1、本合同在未过户前至过户完毕期间内有效作为法律依据。
+                        2、以上合同条款双方必须遵守，经双方无民意后签字生效，不得反悔
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 行情速递 -->
+        <div class="express bgradius mar_bot">
+            <div class="tlt">行情速递</div>
+            <div class="add-msg">
+                <button class="addbtn">+</button>
+                <span>添加车辆信息，查看爱车行情</span>
+                <div class="btnBox"><button class="btn">立即添加</button></div>
+            </div>
+        </div>
+        <!-- 尾部 -->
+        <div class="footer">
+            <a href="./guazi-usedcar-index.html" class="button-center-box">
+                <div class="footer-item"><img src="./images/img-icon01.png" alt="" /><span>首页</span></div>
+            </a>
+            <a href="./guazi-sellcar.html" class="button-center-box">
+                <div class="footer-item"><img src="./images/img-icon02blue.png" alt="" /><span style="color:#1919d3;">卖车</span></div>
+            </a>
+            <a href="./guazi-usedcar-collect.html" class="button-center-box">
+                <div class="footer-item"><img src="./images/img-icon03.png" alt="" /><span>收藏</span><span class="num">2</span></div>
+            </a>
+            <a href="./guazi-usedcar-user.html" class="button-center-box">
+                <div class="footer-item"><img src="./images/img-icon04.png" alt="" /><span>我的</span></div>
+            </a>
+        </div>
+    </div>
+    <!-- js部分 -->
+    <script>
+        // 1.实现tab栏的上半部分的切换，点击哪个选项卡，这个选项卡样式发生改变，点击其他选项卡，该选项卡样式变回原样
+        // 采用排他思想
+        // 2.实现tab栏的下半部分切换，点击上面的选项卡，其下标所对应的下半部分div则显示出来
+        // 1.获取元素
+        var tab_list = document.querySelector('.tab_list');
+        var lis = tab_list.querySelectorAll('li');
+        var items = document.querySelectorAll('.item');
+        // 2.for循环绑定点击事件
+        for (var i = 0; i < lis.length; i++) {
+            // 开始给5个li设置下标
+            lis[i].setAttribute('index', i);
+            lis[i].onclick = function () {
+                // 干掉所有人，其余的li清除class这个类
+                for (var i = 0; i < lis.length; i++) {
+                    lis[i].className = '';
+                }
+                // 留下我自己
+                this.className = 'active';
+                // 下面的显示内容模块
+                var index = this.getAttribute('index');
+                // 干掉所有人，让其余的item这些div隐藏
+                for (var i = 0; i < items.length; i++) {
+                    items[i].style.display = 'none';
+                }
+                // 留下我自己
+                items[index].style.display = 'block';
+            }
+        }
+    </script>
+
+</body>
+
+</html>
